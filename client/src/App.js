@@ -1,18 +1,24 @@
 import React from 'react';
+
+// Pages
 import Map from './pages/Map';
+
+// Components
+import Header from './components/Header';
+import Footer from './components/Footer';
 
 function App() {
   return (
-    <section>
+    <section class='app'>
         <header>
-          HEADER
+          <Header />
         </header>
         <div>
           < Map />
         </div>
-        <div>
-          FOOTER
-        </div>
+        <footer>
+          <Footer />
+        </footer>
     </section>
   );
 }

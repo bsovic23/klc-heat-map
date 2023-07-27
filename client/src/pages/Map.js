@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import USAMap from 'react-usa-map';
 
+
+// Functions and Data
 import { findData, urbanPercent } from '../functions';
 import { mockData } from '../data';
 
@@ -42,10 +44,10 @@ function Map() {
 
     return(
         <section class='map'>
-            <div>
+            <section>
                 < USAMap onClick={mapHandler} customize={stateColors()} />
-            </div>
-            <div>
+            </section>
+            <section>
                 {stateStats ? (
                     <div>
                         <h1>State: </h1>
@@ -66,7 +68,7 @@ function Map() {
                         Chooose a state to get started!
                     </div>
                 )}
-            </div>
+            </section>
         </section>
     )
 };
