@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import USAMap from 'react-usa-map';
 
 import { findData, urbanPercent } from '../functions';
@@ -19,10 +19,31 @@ function Map() {
         chooseStateStats(resultOne);
     };
 
+    /// STATE COLOR
+    const stateColors = () => {
+        return {
+            "NY": {
+                fill: "#FF6600"
+              },
+            // KEEP AS THE DARKEST ORANGE BELOW
+            "NJ": {
+                fill: "#FF6600"
+            },
+            // KEEP AS THE LGIHTEST ORANGE BELOW
+            "PA": {
+                fill: "#FFC299"
+            },
+            // KEEP AS THE REGULAR ORANGE BELOW
+            "CT": {
+                fill: "#FF944D"
+            },
+        }
+    };
+
     return(
         <section class='map'>
             <div>
-                < USAMap onClick={mapHandler} />
+                < USAMap onClick={mapHandler} customize={stateColors()} />
             </div>
             <div>
                 {stateStats ? (
