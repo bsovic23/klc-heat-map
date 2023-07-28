@@ -44,23 +44,23 @@ function Map() {
 
     return(
         <section class='map'>
-            <section>
+            <section class='map-display'>
                 < USAMap onClick={mapHandler} customize={stateColors()} />
             </section>
-            <section>
+            <section class='map-results'>
                 {stateStats ? (
                     <div>
                         <h1>State: </h1>
                         <p>Rural N: {stateStats.rural}</p>
                         <p>Urban N: {stateStats.urban}</p>
                         <p>Population Percent: {stateStats.percent} %</p>
-                        <h2>Top 5 Cities</h2>
+                        <h2>Top 5 Recruitment Cities</h2>
                         <ol>
-                            <li>1. NAME, N, rural/urban status</li>
-                            <li>2. NAME, N, rural/urban status</li>
-                            <li>3. NAME, N, rural/urban status</li>
-                            <li>4. NAME, N, rural/urban status</li>
-                            <li>5. NAME, N, rural/urban status</li>
+                            <li>NAME, N, rural/urban status</li>
+                            <li>NAME, N, rural/urban status</li>
+                            <li>NAME, N, rural/urban status</li>
+                            <li>NAME, N, rural/urban status</li>
+                            <li>NAME, N, rural/urban status</li>
                         </ol>
                     </div>
                 ) : (
