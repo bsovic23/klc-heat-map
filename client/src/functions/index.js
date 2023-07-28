@@ -10,6 +10,7 @@ export const findData = ( stateInput, mockData ) => {
 
 // After state clicked these functions run ==================================
 
+// Function determines the Urban N, Rural N, and Urban/N percentage
 export const urbanPercent = (stateData) => {
     const population = { urban: 0, rural: 0 };
   
@@ -25,4 +26,19 @@ export const urbanPercent = (stateData) => {
     population.percent = urbanBreakdown;
 
     return population;
+  };
+
+  // Function determines the top 5 cities
+  export const topCities = (stateData) => {
+    const count = {};
+
+    for (const obj of stateData) {
+      const cityCount = obj.city;
+      count[cityCount] = (count[cityCount] || 0) +1;
+    }
+
+    const unsortedCount = Object.entries(count);
+    const sortedArray = unsortedCount.sort((a,b) => b[1] - a[1]);
+
+    return sortedArray;
   };

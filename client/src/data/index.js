@@ -1,5 +1,5 @@
 export const mockData = [
-    {id: 1, state: "AL", city: "Birmingham", population: "urban"},
+    {id: 1, state: "AL", city: "Vestavia Hills", population: "rural"},
     {id: 2, state: "AL", city: "Birmingham", population: "urban"},
     {id: 3, state: "AL", city: "Birmingham", population: "urban"},
     {id: 4, state: "AL", city: "Citronelle", population: "rural"},

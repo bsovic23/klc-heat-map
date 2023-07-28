@@ -1,24 +1,26 @@
 import React, { useState, useEffect } from 'react';
 import USAMap from 'react-usa-map';
 
-
 // Functions and Data
-import { findData, urbanPercent } from '../functions';
+import { findData, topCities, urbanPercent } from '../functions';
 import { mockData } from '../data';
 
 function Map() {
 
     const [stateStats, chooseStateStats] = useState('');
+    const [stateStats2, chooseStateStats2] = useState('');
 
     const mapHandler = (event) => {
-        let stateClick = event.target.dataset.name
-        let stateClick2 = stateClick.toString();
-        let results = findData(stateClick2, mockData);
-        // individual state stats
+        // variable for which state is clicked
+        let stateClick = event.target.dataset.name.toString();
+        // gives back an array of objects for the state clicked
+        let results = findData(stateClick, mockData);
+        // == All FX below run stats using array of all state objects click
         let resultOne = urbanPercent(results);
-
+        let resultTwo = topCities(results);
         // All above relevant functions with results need to be grouped before state function
         chooseStateStats(resultOne);
+        chooseStateStats2(resultTwo);
     };
 
     /// STATE COLOR
@@ -51,16 +53,17 @@ function Map() {
                 {stateStats ? (
                     <div>
                         <h1>State: </h1>
+                        <p>Total N Recruitment: </p>
                         <p>Rural N: {stateStats.rural}</p>
                         <p>Urban N: {stateStats.urban}</p>
-                        <p>Population Percent: {stateStats.percent} %</p>
+                        <p>Urban Recruitment Percent: {stateStats.percent} %</p>
                         <h2>Top 5 Recruitment Cities</h2>
                         <ol>
-                            <li>NAME, N, rural/urban status</li>
-                            <li>NAME, N, rural/urban status</li>
-                            <li>NAME, N, rural/urban status</li>
-                            <li>NAME, N, rural/urban status</li>
-                            <li>NAME, N, rural/urban status</li>
+                            <li>City: {stateStats2[0][0]}, N: {stateStats2[0][1]}, Urban/Rural Status: </li>
+                            <li>City: {stateStats2[1][0]}, N: {stateStats2[1][1]}, Urban/Rural Status: </li>
+                            <li>City: {stateStats2[2][0]}, N: {stateStats2[2][1]}, Urban/Rural Status: </li>
+                            <li>City: {stateStats2[3][0]}, N: {stateStats2[3][1]}, Urban/Rural Status: </li>
+                            <li>City: {stateStats2[4][0]}, N: {stateStats2[4][1]}, Urban/Rural Status: </li>
                         </ol>
                     </div>
                 ) : (
