@@ -55,31 +55,36 @@ function Map() {
 
     return(
         <section class='map'>
-            <section class='map-display'>
-                < USAMap onClick={mapHandler} customize={stateColors(mockData)} />
+            <section class='flex-container'>
+                <section class='map-display'>
+                    < USAMap onClick={mapHandler} customize={stateColors(mockData)} />
+                </section>
+                <section class='map-results'>
+                    {stateStats ? (
+                        <div>
+                            <h1>State: </h1>
+                            <p>Total N Recruitment: </p>
+                            <p>Rural N: {stateStats.rural}</p>
+                            <p>Urban N: {stateStats.urban}</p>
+                            <p>Urban Recruitment Percent: {stateStats.percent} %</p>
+                            <h2>Top 5 Recruitment Cities</h2>
+                            <ol>
+                                <li>City: {stateStats2[0][0]}, N: {stateStats2[0][1]}, Urban/Rural Status: </li>
+                                <li>City: {stateStats2[1][0]}, N: {stateStats2[1][1]}, Urban/Rural Status: </li>
+                                <li>City: {stateStats2[2][0]}, N: {stateStats2[2][1]}, Urban/Rural Status: </li>
+                                <li>City: {stateStats2[3][0]}, N: {stateStats2[3][1]}, Urban/Rural Status: </li>
+                                <li>City: {stateStats2[4][0]}, N: {stateStats2[4][1]}, Urban/Rural Status: </li>
+                            </ol>
+                        </div>
+                    ) : (
+                        <div>
+                            Chooose a state to get started!
+                        </div>
+                    )}
+                </section>
             </section>
-            <section class='map-results'>
-                {stateStats ? (
-                    <div>
-                        <h1>State: </h1>
-                        <p>Total N Recruitment: </p>
-                        <p>Rural N: {stateStats.rural}</p>
-                        <p>Urban N: {stateStats.urban}</p>
-                        <p>Urban Recruitment Percent: {stateStats.percent} %</p>
-                        <h2>Top 5 Recruitment Cities</h2>
-                        <ol>
-                            <li>City: {stateStats2[0][0]}, N: {stateStats2[0][1]}, Urban/Rural Status: </li>
-                            <li>City: {stateStats2[1][0]}, N: {stateStats2[1][1]}, Urban/Rural Status: </li>
-                            <li>City: {stateStats2[2][0]}, N: {stateStats2[2][1]}, Urban/Rural Status: </li>
-                            <li>City: {stateStats2[3][0]}, N: {stateStats2[3][1]}, Urban/Rural Status: </li>
-                            <li>City: {stateStats2[4][0]}, N: {stateStats2[4][1]}, Urban/Rural Status: </li>
-                        </ol>
-                    </div>
-                ) : (
-                    <div>
-                        Chooose a state to get started!
-                    </div>
-                )}
+            <section>
+                LEGEND BAR WITH KEY REGARDING COLOR PERCENT CLASSIFICATIONS HERE
             </section>
         </section>
     )
