@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import USAMap from 'react-usa-map';
 
 // Functions and Data
-import { findData, topCities, urbanPercent } from '../functions';
+import { findData, urbanPercentColor, stateFillColor, topCities, urbanPercent } from '../functions';
 import { mockData } from '../data';
 
 function Map() {
@@ -24,10 +24,19 @@ function Map() {
     };
 
     /// STATE COLOR
-    const stateColors = () => {
+    const stateColors = (mockData) => {
+
+        const colorResult = urbanPercentColor(mockData);
+        
         return {
-            "NY": {
-                fill: "#FF6600"
+            "AL": {
+                fill: stateFillColor("AL", colorResult)
+              },
+            "AK": {
+                fill: stateFillColor("AK", colorResult)
+              },
+            "CA": {
+                fill: stateFillColor("CA", colorResult)
               },
             // KEEP AS THE DARKEST ORANGE BELOW
             "NJ": {
@@ -47,7 +56,7 @@ function Map() {
     return(
         <section class='map'>
             <section class='map-display'>
-                < USAMap onClick={mapHandler} customize={stateColors()} />
+                < USAMap onClick={mapHandler} customize={stateColors(mockData)} />
             </section>
             <section class='map-results'>
                 {stateStats ? (

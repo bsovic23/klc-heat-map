@@ -8,6 +8,49 @@ export const findData = ( stateInput, mockData ) => {
     return stateData;
 };
 
+// CSS Coloring for states ==============================
+/* Determine Number of Rural and Urban per State */
+export const urbanPercentColor = (allData) => {
+  const statePercent = {};
+
+  for (const obj of allData) {
+    const state = obj.state;
+    const population = obj.population;
+    statePercent[state] = statePercent[state] || { rural: 0, urban: 0};
+  
+    if (population === 'rural') {
+      statePercent[state].rural +=1;
+    } else if (population === 'urban') {
+      statePercent[state].urban +=1;
+    };
+  }
+
+  const statePercentArray = Object.entries(statePercent).map(([state, counts]) => ({
+    state,
+    rural: counts.rural,
+    urban: counts.urban,
+  }));
+
+  return statePercentArray;
+};
+
+/* Find state, get percentage, get color */
+export const stateFillColor = (state, arr) => {
+
+  const stateObj = arr.find((obj) => obj.state === state);
+
+  if (stateObj) {
+    const urbanN = stateObj.urban;
+    const totalN = stateObj.urban + stateObj.rural;
+    const colorPercent = (urbanN / totalN) * 100;
+    
+    return colorPercent > 70 ? "#00FFFF" : "#8A2BE2";
+  }
+
+  return null;
+};
+
+
 // After state clicked these functions run ==================================
 
 // Function determines the Urban N, Rural N, and Urban/N percentage
@@ -23,7 +66,7 @@ export const urbanPercent = (stateData) => {
     });
 
     let urbanBreakdown = population.urban / stateData.length;
-    population.percent = urbanBreakdown;
+    population.percent = urbanBreakdown * 100;
 
     return population;
   };
