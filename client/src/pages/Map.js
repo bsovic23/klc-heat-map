@@ -50,6 +50,9 @@ function Map() {
             "CT": {
                 fill: "#FF944D"
             },
+            "TX": {
+                fill: stateFillColor("TX", colorResult)
+            },
         }
     };
 
@@ -83,7 +86,7 @@ function Map() {
                     )}
                 </section>
             </section>
-            <section>
+            <section class='legend'>
                 LEGEND BAR WITH KEY REGARDING COLOR PERCENT CLASSIFICATIONS HERE
             </section>
         </section>

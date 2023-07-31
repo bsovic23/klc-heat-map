@@ -19,4 +19,16 @@ export const mockData = [
     {id: 16, state: "CA", city: "Palm Springs", population: "rural"},
     {id: 17, state: "CA", city: "San Francisco", population: "urban"},
     {id: 18, state: "CA", city: "Santa Monica", population: "rural"},
+    // TX
+    {id: 19, state: "TX", city: "Dallas", population: "urban"},
+    {id: 20, state: "TX", city: "San Antonio", population: "urban"},
+    {id: 21, state: "TX", city: "Austin", population: "urban"},
+    {id: 22, state: "TX", city: "Dallas", population: "urban"},
+    {id: 23, state: "TX", city: "Arlington", population: "urban"},
+    {id: 24, state: "TX", city: "Dallas", population: "urban"},
+    {id: 25, state: "TX", city: "Arlington", population: "urban"},
+    {id: 26, state: "TX", city: "Dallas", population: "urban"},
+    {id: 27, state: "TX", city: "Austin", population: "urban"},
+    {id: 28, state: "TX", city: "Dallas", population: "urban"},
+    {id: 29, state: "TX", city: "Santa Monica", population: "urban"},
 ];
