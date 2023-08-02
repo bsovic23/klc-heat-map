@@ -65,11 +65,20 @@ function Map() {
                 <section class='map-results'>
                     {stateStats ? (
                         <div>
-                            <h1>State: </h1>
-                            <p>Total N Recruitment: </p>
+                            <h1>State: {stateStats.state}</h1>
+                            <p>Total N Recruitment: {stateStats.total}</p>
                             <p>Rural N: {stateStats.rural}</p>
                             <p>Urban N: {stateStats.urban}</p>
                             <p>Urban Recruitment Percent: {stateStats.percent} %</p>
+                        </div>
+                    ) : (
+                        <div>
+                            Chooose a state to get started!
+                        </div>
+                    )}
+                    <div>
+                    {(stateStats2.length !== 0) ? (
+                        <div>
                             <h2>Top 5 Recruitment Cities</h2>
                             <ol>
                                 <li>City: {stateStats2[0][0]}, N: {stateStats2[0][1]}, Urban/Rural Status: </li>
@@ -81,9 +90,10 @@ function Map() {
                         </div>
                     ) : (
                         <div>
-                            Chooose a state to get started!
+                            There is not recruitment data for this state
                         </div>
                     )}
+                    </div>
                 </section>
             </section>
             <section class='legend'>
