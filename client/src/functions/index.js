@@ -52,7 +52,7 @@ export const fillColor = (state, arr) => {
     const totalN = stateObj.urban + stateObj.rural;
     const colorPercent = Math.round((urbanN / totalN) * 100);
     
-    if (colorPercent > 0 && colorPercent < 15) {
+    if (colorPercent > -1 && colorPercent < 15) {
       return "#FF6600";
     } else if (colorPercent < 30 ) {
       return "#FF944D";
@@ -110,5 +110,11 @@ export const geographyStatus = (stateData) => {
     const unsortedCount = Object.entries(count);
     const sortedArray = unsortedCount.sort((a,b) => b[1] - a[1]);
 
-    return sortedArray;
+    const resultArray = sortedArray.map(([city, count]) => {
+      const cityData = stateData.find(obj => obj.city === city);
+      const cityPopulation = cityData ? cityData.population : 0;
+      return [city, count, cityPopulation];
+  });
+
+    return resultArray;
   };

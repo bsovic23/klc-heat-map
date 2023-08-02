@@ -62,6 +62,24 @@ code {
   font-size: 20px;
 }
 
+/* Table */
+.table-map-results tr th {
+  background-color: aquamarine;
+}
+
+.table-map-results .rowClass {
+  background-color: white;
+}
+
+.table-map-results tr td {
+  padding-left: 25px;
+  padding-right: 25px;
+}
+
+.table-map-results .rowClass:hover {
+background-color: yellow;
+}
+
 /* Legend */
 .map .legend {
   text-align: center;
@@ -69,6 +87,55 @@ code {
   border: 5px solid black;
   padding: 50px;
   background-color: gray;
+  display: flex;
+  align-items: center;
+}
+
+.map .legend p {
+  margin: 0px;
+  padding: 5px 10px;
+}
+
+.map .legend .tag {
+  margin: 0px;
+  padding: 5px 70px;
+  background-color: white;
+}
+
+.map .legend .tag-none {
+  margin-right: 30px;
+}
+
+.map .legend #colorNone {
+  background-color: #00FFFF;
+}
+
+.map .legend #colorOne {
+  background-color: #FF6600;
+}
+
+.map .legend #colorTwo {
+  background-color: #FF944D;
+}
+
+.map .legend #colorThree {
+  background-color: #FFC299;
+}
+
+.map .legend #colorFour {
+  background-color: #808080;
+}
+
+.map .legend #colorFive {
+  background-color: #8A8AFF;
+}
+
+.map .legend #colorSix {
+  background-color: #0000FF;
+}
+
+.map .legend #colorSeven {
+  background-color: #000075;
 }
 
 /* Footer */

@@ -222,21 +222,38 @@ function Map() {
                     <div>
                         {stateStats2.length !== 0 && (
                             <div>
-                                <h2>Top {stateStats2.length} Recruitment Cities</h2>
-                                <ol>
-                                    {stateStats2.slice(0, 5).map((cityData, index) => (
-                                        <li key={index}>
-                                            City: {cityData[0]}, N: {cityData[1]}, Urban/Rural Status:
-                                        </li>
-                                    ))}
-                                </ol>
+                              <h2>Top {stateStats2.length} Recruitment Cities</h2>         
+                              <table border="1" class='table-map-results'>
+                                <tr>
+                                  <th>City:</th>
+                                  <th>N:</th>
+                                  <th>Urban/Rural Status:</th>
+                                </tr>
+                                  {stateStats2.slice(0, 5).map((cityData, index) => (
+                                          <tr key={index} class="rowClass">
+                                            <td>{cityData[0]}</td>
+                                            <td>{cityData[1]}</td>
+                                            <td>{cityData[2]}</td>
+                                          </tr>
+                                      ))}
+                              </table>
                             </div>
                         )}
                     </div>
                 </section>
             </section>
+            <h1>Urban Recruitment Percent</h1>
             <section class='legend'>
-                LEGEND BAR WITH KEY REGARDING COLOR PERCENT CLASSIFICATIONS HERE
+                <p id='colorNone' class='tag-none'>No Data</p> 
+                <p class='tag'> MORE RURAL</p>
+                <p id='colorOne'>0 - 15 % </p>
+                <p id='colorTwo'>15 - 30 % </p>
+                <p id='colorThree'>30 - 45 % </p>
+                <p id='colorFour'>45 - 55 % </p>
+                <p id='colorFive'>55 - 70 % </p>
+                <p id='colorSix'>70 - 85 % </p>
+                <p id='colorSeven'>85 - 100 % </p>
+                <p class='tag'>MORE URBAN</p>
             </section>
         </section>
     )
