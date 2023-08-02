@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import USAMap from 'react-usa-map';
 
 // Functions and Data
-import { findData, urbanPercentColor, stateFillColor, topCities, urbanPercent } from '../functions';
+import { findStateData, geographyPercent, fillColor, topCities, geographyStatus } from '../functions';
 import { mockData } from '../data';
 
 function Map() {
@@ -13,11 +13,15 @@ function Map() {
     const mapHandler = (event) => {
         // variable for which state is clicked
         let stateClick = event.target.dataset.name.toString();
+
         // gives back an array of objects for the state clicked
-        let results = findData(stateClick, mockData);
+        let stateResultsAll = findStateData(stateClick, mockData);
+
         // == All FX below run stats using array of all state objects click
-        let resultOne = urbanPercent(results);
-        let resultTwo = topCities(results);
+        // resultOne for the top map section, resultTwo for the bottom map section
+        let resultOne = geographyStatus(stateResultsAll);
+        let resultTwo = topCities(stateResultsAll);
+
         // All above relevant functions with results need to be grouped before state function
         chooseStateStats(resultOne);
         chooseStateStats2(resultTwo);
@@ -26,17 +30,17 @@ function Map() {
     /// STATE COLOR
     const stateColors = (mockData) => {
 
-        const colorResult = urbanPercentColor(mockData);
+        const colorResultAll = geographyPercent(mockData);
         
         return {
             "AL": {
-                fill: stateFillColor("AL", colorResult)
+                fill: fillColor("AL", colorResultAll)
               },
             "AK": {
-                fill: stateFillColor("AK", colorResult)
+                fill: fillColor("AK", colorResultAll)
               },
             "CA": {
-                fill: stateFillColor("CA", colorResult)
+                fill: fillColor("CA", colorResultAll)
               },
             // KEEP AS THE DARKEST ORANGE BELOW
             "NJ": {
@@ -51,7 +55,7 @@ function Map() {
                 fill: "#FF944D"
             },
             "TX": {
-                fill: stateFillColor("TX", colorResult)
+                fill: fillColor("TX", colorResultAll)
             },
         }
     };
@@ -63,36 +67,42 @@ function Map() {
                     < USAMap onClick={mapHandler} customize={stateColors(mockData)} />
                 </section>
                 <section class='map-results'>
-                    {stateStats ? (
-                        <div>
-                            <h1>State: {stateStats.state}</h1>
-                            <p>Total N Recruitment: {stateStats.total}</p>
-                            <p>Rural N: {stateStats.rural}</p>
-                            <p>Urban N: {stateStats.urban}</p>
-                            <p>Urban Recruitment Percent: {stateStats.percent} %</p>
-                        </div>
-                    ) : (
-                        <div>
-                            Chooose a state to get started!
-                        </div>
-                    )}
                     <div>
-                    {(stateStats2.length !== 0) ? (
-                        <div>
-                            <h2>Top 5 Recruitment Cities</h2>
-                            <ol>
-                                <li>City: {stateStats2[0][0]}, N: {stateStats2[0][1]}, Urban/Rural Status: </li>
-                                <li>City: {stateStats2[1][0]}, N: {stateStats2[1][1]}, Urban/Rural Status: </li>
-                                <li>City: {stateStats2[2][0]}, N: {stateStats2[2][1]}, Urban/Rural Status: </li>
-                                <li>City: {stateStats2[3][0]}, N: {stateStats2[3][1]}, Urban/Rural Status: </li>
-                                <li>City: {stateStats2[4][0]}, N: {stateStats2[4][1]}, Urban/Rural Status: </li>
-                            </ol>
-                        </div>
-                    ) : (
-                        <div>
-                            There is not recruitment data for this state
-                        </div>
-                    )}
+                        {stateStats ? (
+                            <div>
+                                <h1>State: {stateStats.state}</h1>
+                                {(stateStats.length) !== 0 ? (
+                                    <div>
+                                        <p>Total N Recruitment: {stateStats.total}</p>
+                                        <p>Rural N: {stateStats.rural}</p>
+                                        <p>Urban N: {stateStats.urban}</p>
+                                        <p>Urban Recruitment Percent: {stateStats.percent} %</p>
+                                    </div>
+                                ) : (
+                                    <div>
+                                        There are no N recruitment results
+                                    </div>
+                                )}
+                            </div>
+                        ) : (
+                            <div>
+                                Choose a state to get started!
+                            </div>
+                        )}
+                    </div>
+                    <div>
+                        {stateStats2.length !== 0 && (
+                            <div>
+                                <h2>Top {stateStats2.length} Recruitment Cities</h2>
+                                <ol>
+                                    {stateStats2.slice(0, 5).map((cityData, index) => (
+                                        <li key={index}>
+                                            City: {cityData[0]}, N: {cityData[1]}, Urban/Rural Status:
+                                        </li>
+                                    ))}
+                                </ol>
+                            </div>
+                        )}
                     </div>
                 </section>
             </section>

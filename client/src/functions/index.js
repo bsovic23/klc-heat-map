@@ -2,9 +2,14 @@
 Function takes the state clicked, and gets all object data related to that state
 */
 
-export const findData = ( stateInput, mockData ) => {
+export const findStateData = ( stateInput, mockData ) => {
     const stateData = mockData.filter((data) => data.state === stateInput);
 
+    if (stateData.length !== 0) {
+      return stateData;
+    };
+
+    stateData.state = stateInput;
     return stateData;
 };
 
@@ -13,7 +18,7 @@ export const findData = ( stateInput, mockData ) => {
 //===========================================================================
 
 /* Determine Number of Rural and Urban per State */
-export const urbanPercentColor = (allData) => {
+export const geographyPercent = (allData) => {
   const statePercent = {};
 
   for (const obj of allData) {
@@ -38,7 +43,7 @@ export const urbanPercentColor = (allData) => {
 };
 
 /* Find state, get percentage, get color */
-export const stateFillColor = (state, arr) => {
+export const fillColor = (state, arr) => {
 
   const stateObj = arr.find((obj) => obj.state === state);
 
@@ -47,10 +52,23 @@ export const stateFillColor = (state, arr) => {
     const totalN = stateObj.urban + stateObj.rural;
     const colorPercent = Math.round((urbanN / totalN) * 100);
     
-    return colorPercent > 70 ? "#00FFFF" : "#8A2BE2";
+    if (colorPercent > 0 && colorPercent < 15) {
+      return "#FF6600";
+    } else if (colorPercent < 30 ) {
+      return "#FF944D";
+    } else if (colorPercent < 45 ) {
+      return "#FFC299";
+    } else if (colorPercent < 55 ) {
+      return "#808080";
+    } else if (colorPercent < 70 ) {
+      return "#8A8AFF";
+    } else if (colorPercent < 85 ) {
+      return "#0000FF";
+    } else if (colorPercent < 101 ) {
+      return "#000075";
+    };
   }
-
-  return null;
+  return "#00FFFF";
 };
 
 //===========================================================================
@@ -58,7 +76,9 @@ export const stateFillColor = (state, arr) => {
 //===========================================================================
 
 // Function determines the Urban N, Rural N, and Urban/N percentage
-export const urbanPercent = (stateData) => {
+export const geographyStatus = (stateData) => {
+
+    if (stateData.length !== 0) {
     const stateName = stateData[0].state;
     const population = { state: stateName, urban: 0, rural: 0 };
   
@@ -74,6 +94,8 @@ export const urbanPercent = (stateData) => {
     population.total = population.urban + population.rural;
 
     return population;
+    };
+    return stateData;
   };
 
   // Function determines the top 5 cities
