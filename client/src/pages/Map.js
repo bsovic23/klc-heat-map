@@ -39,24 +39,153 @@ function Map() {
             "AK": {
                 fill: fillColor("AK", colorResultAll)
               },
-            "CA": {
+              "AZ": {
+                fill: fillColor("AZ", colorResultAll)
+              },
+              "AR": {
+                fill: fillColor("AR", colorResultAll)
+              },
+              "CA": {
                 fill: fillColor("CA", colorResultAll)
               },
-            // KEEP AS THE DARKEST ORANGE BELOW
-            "NJ": {
-                fill: "#FF6600"
-            },
-            // KEEP AS THE LGIHTEST ORANGE BELOW
-            "PA": {
-                fill: "#FFC299"
-            },
-            // KEEP AS THE REGULAR ORANGE BELOW
-            "CT": {
-                fill: "#FF944D"
-            },
-            "TX": {
+              "CO": {
+                fill: fillColor("CO", colorResultAll)
+              },
+              "CT": {
+                fill: fillColor("CT", colorResultAll)
+              },
+              "DE": {
+                fill: fillColor("DE", colorResultAll)
+              },
+            "DC": {
+                fill: fillColor("DC", colorResultAll)
+              },
+              "FL": {
+                fill: fillColor("FL", colorResultAll)
+              },
+              "GA": {
+                fill: fillColor("GA", colorResultAll)
+              },
+              "HI": {
+                fill: fillColor("HI", colorResultAll)
+              },
+              "ID": {
+                fill: fillColor("ID", colorResultAll)
+              },
+              "IL": {
+                fill: fillColor("IL", colorResultAll)
+              },
+              "IN": {
+                fill: fillColor("IN", colorResultAll)
+              },
+              "IA": {
+                fill: fillColor("IA", colorResultAll)
+              },
+              "KS": {
+                fill: fillColor("KS", colorResultAll)
+              },
+              "KY": {
+                fill: fillColor("KY", colorResultAll)
+              },
+              "LA": {
+                fill: fillColor("LA", colorResultAll)
+              },
+              "ME": {
+                fill: fillColor("ME", colorResultAll)
+              },
+              "MD": {
+                fill: fillColor("MD", colorResultAll)
+              },
+              "MA": {
+                fill: fillColor("MA", colorResultAll)
+              },
+              "MI": {
+                fill: fillColor("MI", colorResultAll)
+              },
+              "MN": {
+                fill: fillColor("MN", colorResultAll)
+              },
+              "MS": {
+                fill: fillColor("MS", colorResultAll)
+              },
+              "MO": {
+                fill: fillColor("MO", colorResultAll)
+              },
+              "MT": {
+                fill: fillColor("MT", colorResultAll)
+              },
+              "NE": {
+                fill: fillColor("NE", colorResultAll)
+              },
+              "NV": {
+                fill: fillColor("NV", colorResultAll)
+              },
+              "NH": {
+                fill: fillColor("NH", colorResultAll)
+              },
+              "NJ": {
+                fill: fillColor("NJ", colorResultAll)
+              },
+              "NM": {
+                fill: fillColor("NM", colorResultAll)
+              },
+              "NY": {
+                fill: fillColor("NY", colorResultAll)
+              },
+              "NC": {
+                fill: fillColor("NC", colorResultAll)
+              },
+              "ND": {
+                fill: fillColor("ND", colorResultAll)
+              },
+              "OH": {
+                fill: fillColor("OH", colorResultAll)
+              },
+              "OK": {
+                fill: fillColor("OK", colorResultAll)
+              },
+              "OR": {
+                fill: fillColor("OR", colorResultAll)
+              },
+              "PA": {
+                fill: fillColor("PA", colorResultAll)
+              },
+              "RI": {
+                fill: fillColor("RI", colorResultAll)
+              },
+              "SC": {
+                fill: fillColor("SC", colorResultAll)
+              },
+              "SD": {
+                fill: fillColor("SD", colorResultAll)
+              },
+              "TN": {
+                fill: fillColor("TN", colorResultAll)
+              },
+              "TX": {
                 fill: fillColor("TX", colorResultAll)
-            },
+              },
+              "UT": {
+                fill: fillColor("UT", colorResultAll)
+              },
+              "VT": {
+                fill: fillColor("VT", colorResultAll)
+              },
+              "VA": {
+                fill: fillColor("VA", colorResultAll)
+              },
+              "WA": {
+                fill: fillColor("WA", colorResultAll)
+              },
+              "WV": {
+                fill: fillColor("WV", colorResultAll)
+              },
+              "WI": {
+                fill: fillColor("WI", colorResultAll)
+              },
+              "WY": {
+                fill: fillColor("WY", colorResultAll)
+              }
         }
     };
 
