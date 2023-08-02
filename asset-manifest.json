@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/kls-heat-map/static/css/main.7d6fbe07.css",
-    "main.js": "/kls-heat-map/static/js/main.e407a383.js",
+    "main.js": "/kls-heat-map/static/js/main.437a62dd.js",
     "index.html": "/kls-heat-map/index.html",
     "main.7d6fbe07.css.map": "/kls-heat-map/static/css/main.7d6fbe07.css.map",
-    "main.e407a383.js.map": "/kls-heat-map/static/js/main.e407a383.js.map"
+    "main.437a62dd.js.map": "/kls-heat-map/static/js/main.437a62dd.js.map"
   },
   "entrypoints": [
     "static/css/main.7d6fbe07.css",
-    "static/js/main.e407a383.js"
+    "static/js/main.437a62dd.js"
   ]
 }
