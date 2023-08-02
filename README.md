@@ -2,11 +2,11 @@
 
 ## Table of Contents
 
-- [Description](#description)
-- [Tools](#tools)
-- [Deployed_Application](#deployed-application)
-- [Future_Developments](#future-developments)
-- [Screenshots](#screenshots)
+[Description](#description)
+[Tools](#tools)
+[Deployed_Application](#deployed-application)
+[Future_Developments](#future-developments)
+[Screenshots](#screenshots)
 
 ## Description
 
