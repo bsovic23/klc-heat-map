@@ -27,6 +27,8 @@ The deployed application can be seen at https://bsovic23.github.io/kls-heat-map/
 
 * Add a back end server to allow for direct update of data
 * Add city/zip code "heat map" to the homepage application
+* Add navbar with version tab history, in depth city analysis
+* Add functionality to look by region
 
 ## Screenshots
 

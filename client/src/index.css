@@ -19,13 +19,21 @@ code {
 }
 
 /* Header */
+.header {
+  background-color: aquamarine;
+}
+
 .header h1 {
   text-align: center;
   font-weight: 800;
   font-size: 70px;
-  background-color: aquamarine;
 }
 
+.header h4 {
+  text-align: center;
+  font-weight: 300;
+  font-size: 30px;
+}
 
 /* Map */
 .map {
