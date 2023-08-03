@@ -25,5 +25,9 @@ The deployed application can be seen at https://bsovic23.github.io/kls-heat-map/
 
 ## Future Developments
 
+* Add a back end server to allow for direct update of data
+* Add city/zip code "heat map" to the homepage application
 
 ## Screenshots
+
+![Screenshot of Application](../kls-heat-map/client/src/images/homepage.PNG)
