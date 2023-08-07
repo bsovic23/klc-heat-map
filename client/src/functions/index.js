@@ -52,20 +52,16 @@ export const fillColor = (state, arr) => {
     const totalN = stateObj.urban + stateObj.rural;
     const colorPercent = Math.round((urbanN / totalN) * 100);
     
-    if (colorPercent > -1 && colorPercent < 15) {
-      return "#FF6600";
-    } else if (colorPercent < 30 ) {
-      return "#FF944D";
-    } else if (colorPercent < 45 ) {
+    if (colorPercent > -1 && colorPercent < 20) {
+      return "#FFF0E6";
+    } else if (colorPercent < 40 ) {
       return "#FFC299";
-    } else if (colorPercent < 55 ) {
-      return "#808080";
-    } else if (colorPercent < 70 ) {
-      return "#8A8AFF";
-    } else if (colorPercent < 85 ) {
-      return "#0000FF";
+    } else if (colorPercent < 60 ) {
+      return "#FFA366";
+    } else if (colorPercent < 80 ) {
+      return "#FF8533";
     } else if (colorPercent < 101 ) {
-      return "#000075";
+      return "#FF6600";
     };
   }
   return "#00FFFF";

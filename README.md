@@ -3,14 +3,18 @@
 ## Table of Contents
 
 [Description](#description)
+
 [Tools](#tools)
+
 [Deployed_Application](#deployed-application)
+
 [Future_Developments](#future-developments)
+
 [Screenshots](#screenshots)
 
 ## Description
 
-This front-end react application is used to look at the recruiment efforts of the KLC team in the United States.
+This front-end react application is used to look at the participation in Kidney Learning Center Activities for the National Kidney Foundation. Users can interact with the app by selecting individual states, which then populateds the gray section with relevant information. The user can then see the breakdown of Urban vs Rural participation, as well as see the top five particiaption cities (detailed with their total N and Urban/Rural status).
 
 ## Tools
 
@@ -21,7 +25,7 @@ This front-end react application is used to look at the recruiment efforts of th
 
 ## Deployed Application
 
-The deployed application can be seen at https://bsovic23.github.io/kls-heat-map/
+The deployed application can be found at https://bsovic23.github.io/kls-heat-map/
 
 ## Future Developments
 
@@ -32,4 +36,4 @@ The deployed application can be seen at https://bsovic23.github.io/kls-heat-map/
 
 ## Screenshots
 
-![Screenshot of Application](../kls-heat-map/client/src/images/homepage.PNG)
+![Screenshot of Application](./client/src/images/homepage.PNG)

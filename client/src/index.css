@@ -119,31 +119,27 @@ background-color: yellow;
 }
 
 .map .legend #colorOne {
-  background-color: #FF6600;
+  background-color: #FFF0E6;
 }
 
 .map .legend #colorTwo {
-  background-color: #FF944D;
-}
-
-.map .legend #colorThree {
   background-color: #FFC299;
 }
 
+.map .legend #colorThree {
+  background-color: #FFA366;
+}
+
 .map .legend #colorFour {
-  background-color: #808080;
+  background-color: #FF8533;
 }
 
 .map .legend #colorFive {
-  background-color: #8A8AFF;
+  background-color: #FF6600;
 }
 
-.map .legend #colorSix {
-  background-color: #0000FF;
-}
-
-.map .legend #colorSeven {
-  background-color: #000075;
+.map .legend .tag {
+  background-color: rgb(53, 150, 134);
 }
 
 /* Footer */
