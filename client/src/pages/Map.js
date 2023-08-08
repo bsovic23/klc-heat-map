@@ -57,7 +57,7 @@ function Map() {
               "DE": {
                 fill: fillColor("DE", colorResultAll)
               },
-            "DC": {
+              "DC": {
                 fill: fillColor("DC", colorResultAll)
               },
               "FL": {
@@ -242,8 +242,10 @@ function Map() {
                     </div>
                 </section>
             </section>
-            <h1>Urban Recruitment Percent</h1>
             <section class='legend'>
+              <div>
+                <h1>Urban Participation Percent</h1>
+              </div>
                 <p id='colorNone' class='tag-none'>No Data</p> 
                 <p class='tag'> MORE RURAL</p>
                 <p id='colorOne'>0 - 19 % </p>
