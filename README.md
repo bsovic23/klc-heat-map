@@ -1,4 +1,4 @@
-# KLS Heat Map
+# KLC Heat Map
 
 ## Table of Contents
 
@@ -30,9 +30,8 @@ The deployed application can be found at https://bsovic23.github.io/kls-heat-map
 ## Future Developments
 
 * Add a back end server to allow for direct update of data
-* Add city/zip code "heat map" to the homepage application
-* Add navbar with version tab history, in depth city analysis
-* Add functionality to look by region
+* Add navbar with version tab history, additional in depth city analysis
+* Add functionality to toggle map to view by region
 
 ## Screenshots
 
