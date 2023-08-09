@@ -3,8 +3,8 @@ import React from 'react';
 function Header() {
     return(
         <section class='header'>
-            <h1>KLC Recruitment</h1>
-            <h4>Version 1.01.03</h4>
+            <h1>KLC Participation</h1>
+            <h4>Version 1.01.04</h4>
         </section>
     )
 };

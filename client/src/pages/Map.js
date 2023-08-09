@@ -222,7 +222,11 @@ function Map() {
                     <div>
                         {stateStats2.length !== 0 && (
                             <div>
-                              <h2>Top {stateStats2.length} Participation Cities</h2>         
+                              <h2>
+                                {stateStats2.length >=5
+                                ? `Top 5 Participation Cities`
+                                : `Top ${stateStats2.length} Participation Cities`}
+                              </h2>         
                               <table border="1" class='table-map-results'>
                                 <tr>
                                   <th>City:</th>
