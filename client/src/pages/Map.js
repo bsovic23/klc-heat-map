@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import USAMap from 'react-usa-map';
 
 // Functions and Data
@@ -7,18 +7,48 @@ import { mockData } from '../data';
 
 function Map() {
 
+  // ---------------------------------------------------------------
+  // Data View based on year selected
+  // ---------------------------------------------------------------
+  const [fiscalYearView, setFiscalYearView] = useState('All Time');
+  const [filteredData, setFilteredData] = useState(null);
+  const [internationalCount, setInternationalCount] = useState('');
+
+  useEffect(() => {
+    const filtered = filterDataByYear(mockData, fiscalYearView);
+    setFilteredData(filtered);
+
+    // SET FX HERE THAT COUNTS NUMBER OF NON-UNITED STATES PX
+  }, [fiscalYearView]);
+
+  const selectFYButton = (year) => {
+    setFiscalYearView(year);
+  }
+
+  const filterDataByYear = (mockData, fiscalYearView) => {
+    if (fiscalYearView === 'All Time') {
+      return mockData;
+    } else {
+      return mockData.filter((item) => item.year === fiscalYearView);
+    }
+  };
+
+    // ---------------------------------------------------------------
+    ///  STATE COLOR
+    // ---------------------------------------------------------------
     const [stateStats, chooseStateStats] = useState('');
     const [stateStats2, chooseStateStats2] = useState('');
 
     const mapHandler = (event) => {
-        // variable for which state is clicked
+
+        // State Clicked
         let stateClick = event.target.dataset.name.toString();
 
-        // gives back an array of objects for the state clicked
-        let stateResultsAll = findStateData(stateClick, mockData);
+        // Returns Array of Objects based on State Clicked
+        let stateResultsAll = findStateData(stateClick, filteredData);
 
-        // == All FX below run stats using array of all state objects click
-        // resultOne for the top map section, resultTwo for the bottom map section
+        // resultOne - px, urban/rural stats
+        // resultTwo - state clicked top city data
         let resultOne = geographyStatus(stateResultsAll);
         let resultTwo = topCities(stateResultsAll);
 
@@ -27,10 +57,12 @@ function Map() {
         chooseStateStats2(resultTwo);
     };
 
-    /// STATE COLOR
-    const stateColors = (mockData) => {
+    // ---------------------------------------------------------------
+    ///  STATE COLOR
+    // ---------------------------------------------------------------
+    const stateColors = (mockData, fiscalYearView) => {
 
-        const colorResultAll = geographyPercent(mockData);
+        const colorResultAll = geographyPercent(mockData, fiscalYearView);
         
         return {
             "AL": {
@@ -191,9 +223,20 @@ function Map() {
 
     return(
         <section class='map'>
+            <section class='map-year-select'>
+              <div>
+                <p>Select Button to Filter the map by year of interest</p>
+                <button onClick={() => selectFYButton('All Time')}>All Time</button>
+                <button onClick={() => selectFYButton('FY24')}>FY 24</button> 
+                <button onClick={() => selectFYButton('FY23')}>FY 23</button> 
+              </div>
+              <div>
+                <h1>Currently Viewing {fiscalYearView} Data</h1>
+              </div>
+            </section>
             <section class='flex-container'>
                 <section class='map-display'>
-                    < USAMap onClick={mapHandler} customize={stateColors(mockData)} />
+                    < USAMap onClick={mapHandler} customize={stateColors(mockData, fiscalYearView)} />
                 </section>
                 <section class='map-results'>
                     <div>

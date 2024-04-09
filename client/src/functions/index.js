@@ -2,15 +2,16 @@
 Function takes the state clicked, and gets all object data related to that state
 */
 
-export const findStateData = ( stateInput, mockData ) => {
-    const stateData = mockData.filter((data) => data.state === stateInput);
+// [X] Version 2 pre-test done function findStateData
+// [X] Version 2 works returns stateData based on the FY selected
 
-    if (stateData.length !== 0) {
-      return stateData;
-    };
+export const findStateData = ( stateInput, filteredData ) => {
 
-    stateData.state = stateInput;
-    return stateData;
+  console.log(filteredData);
+
+  const stateData = filteredData.filter((data) => (data.state === stateInput) && (data.country === 'United States')); 
+
+  return stateData;
 };
 
 //===========================================================================
@@ -18,10 +19,10 @@ export const findStateData = ( stateInput, mockData ) => {
 //===========================================================================
 
 /* Determine Number of Rural and Urban per State */
-export const geographyPercent = (allData) => {
+export const geographyPercent = (data) => {
   const statePercent = {};
 
-  for (const obj of allData) {
+  for (const obj of data) {
     const state = obj.state;
     const population = obj.population;
     statePercent[state] = statePercent[state] || { rural: 0, urban: 0};
