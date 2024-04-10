@@ -6,9 +6,23 @@ id, state, city, country, population, year, moduleName, moduleComplete
 
 */
 
-
-
 export const mockData = [
+  {
+    "id": 0,
+    "state": "AK",
+    "city": "Anchorage",
+    "country": "United States",
+    "population": "rural",
+    "year": 'FY24'
+  },
+  {
+    "id": 999,
+    "state": "AK",
+    "city": "Anchorage",
+    "country": "United States",
+    "population": "urban",
+    "year": 'FY23'
+  },
   {
     "id": 1,
     "state": "AL",
@@ -54,15 +68,31 @@ export const mockData = [
     "state": "AL",
     "city": "Birmingham",
     "country": "United States",
-    "population": "urban",
+    "population": "rural",
     "year": 'FY23'
   },
   {
     "id": 7,
-    "state": "NA",
-    "city": "Mumbai",
-    "country": "India",
-    "population": "urban",
+    "state": "AL",
+    "city": "Birmingham",
+    "country": "United States",
+    "population": "rural",
+    "year": 'FY23'
+  },
+  {
+    "id": 8,
+    "state": "AL",
+    "city": "Birmingham",
+    "country": "United States",
+    "population": "rural",
+    "year": 'FY23'
+  },
+  {
+    "id": 9,
+    "state": "AL",
+    "city": "Birmingham",
+    "country": "United States",
+    "population": "rural",
     "year": 'FY23'
   },
 ]

@@ -10,15 +10,17 @@ function Map() {
   // ---------------------------------------------------------------
   // Data View based on year selected
   // ---------------------------------------------------------------
-  const [fiscalYearView, setFiscalYearView] = useState('All Time');
-  const [filteredData, setFilteredData] = useState(null);
+  const [fiscalYearView, setFiscalYearView] = useState('All Time'); // Default View = All Time Data
+  const [filteredData, setFilteredData] = useState(mockData);
   const [internationalCount, setInternationalCount] = useState('');
 
   useEffect(() => {
     const filtered = filterDataByYear(mockData, fiscalYearView);
     setFilteredData(filtered);
 
-    // SET FX HERE THAT COUNTS NUMBER OF NON-UNITED STATES PX
+    chooseStateStats('');
+    chooseStateStats2('');
+    
   }, [fiscalYearView]);
 
   const selectFYButton = (year) => {
@@ -41,10 +43,8 @@ function Map() {
 
     const mapHandler = (event) => {
 
-        // State Clicked
         let stateClick = event.target.dataset.name.toString();
 
-        // Returns Array of Objects based on State Clicked
         let stateResultsAll = findStateData(stateClick, filteredData);
 
         // resultOne - px, urban/rural stats
@@ -52,17 +52,16 @@ function Map() {
         let resultOne = geographyStatus(stateResultsAll);
         let resultTwo = topCities(stateResultsAll);
 
-        // All above relevant functions with results need to be grouped before state function
         chooseStateStats(resultOne);
         chooseStateStats2(resultTwo);
     };
 
     // ---------------------------------------------------------------
-    ///  STATE COLOR
+    ///  STATE COLOR [X] SEEMS TO UPDATE BASED ON BUTTON CLICKED
     // ---------------------------------------------------------------
-    const stateColors = (mockData, fiscalYearView) => {
+    const stateColors = (filteredData) => {
 
-        const colorResultAll = geographyPercent(mockData, fiscalYearView);
+        const colorResultAll = geographyPercent(filteredData);
         
         return {
             "AL": {
@@ -236,7 +235,7 @@ function Map() {
             </section>
             <section class='flex-container'>
                 <section class='map-display'>
-                    < USAMap onClick={mapHandler} customize={stateColors(mockData, fiscalYearView)} />
+                    < USAMap onClick={mapHandler} customize={stateColors(filteredData)} />
                 </section>
                 <section class='map-results'>
                     <div>
@@ -267,8 +266,8 @@ function Map() {
                             <div>
                               <h2>
                                 {stateStats2.length >=5
-                                ? `Top 5 Participation Cities`
-                                : `Top ${stateStats2.length} Participation Cities`}
+                                ? `${fiscalYearView} Top 5 Participation Cities`
+                                : `${fiscalYearView} Top ${stateStats2.length} Participation Cities`}
                               </h2>         
                               <table border="1" class='table-map-results'>
                                 <tr>

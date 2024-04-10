@@ -20,6 +20,7 @@ export const findStateData = ( stateInput, filteredData ) => {
 
 /* Determine Number of Rural and Urban per State */
 export const geographyPercent = (data) => {
+
   const statePercent = {};
 
   for (const obj of data) {
@@ -75,43 +76,43 @@ export const fillColor = (state, arr) => {
 // Function determines the Urban N, Rural N, and Urban/N percentage
 export const geographyStatus = (stateData) => {
 
-    if (stateData.length !== 0) {
-    const stateName = stateData[0].state;
-    const population = { state: stateName, urban: 0, rural: 0 };
-  
-    for (const obj of stateData) {
-      if (obj.population === "urban") {
-        population.urban += 1;
-      } else if (obj.population === "rural") {
-        population.rural += 1;
-      }
-    };
+  if (stateData.length !== 0) {
+  const stateName = stateData[0].state;
+  const population = { state: stateName, urban: 0, rural: 0 };
 
-    population.percent = Math.round((population.urban / stateData.length) * 100);
-    population.total = population.urban + population.rural;
-
-    return population;
-    };
-    return stateData;
+  for (const obj of stateData) {
+    if (obj.population === "urban") {
+      population.urban += 1;
+    } else if (obj.population === "rural") {
+      population.rural += 1;
+    }
   };
 
-  // Function determines the top 5 cities
-  export const topCities = (stateData) => {
-    const count = {};
+  population.percent = Math.round((population.urban / stateData.length) * 100);
+  population.total = population.urban + population.rural;
 
-    for (const obj of stateData) {
-      const cityCount = obj.city;
-      count[cityCount] = (count[cityCount] || 0) +1;
-    }
+  return population;
+  };
+  return stateData;
+};
 
-    const unsortedCount = Object.entries(count);
-    const sortedArray = unsortedCount.sort((a,b) => b[1] - a[1]);
+// Function determines the top 5 cities
+export const topCities = (stateData) => {
+  const count = {};
 
-    const resultArray = sortedArray.map(([city, count]) => {
-      const cityData = stateData.find(obj => obj.city === city);
-      const cityPopulation = cityData ? cityData.population : 0;
-      return [city, count, cityPopulation];
+  for (const obj of stateData) {
+    const cityCount = obj.city;
+    count[cityCount] = (count[cityCount] || 0) +1;
+  }
+
+  const unsortedCount = Object.entries(count);
+  const sortedArray = unsortedCount.sort((a,b) => b[1] - a[1]);
+
+  const resultArray = sortedArray.map(([city, count]) => {
+    const cityData = stateData.find(obj => obj.city === city);
+    const cityPopulation = cityData ? cityData.population : 0;
+    return [city, count, cityPopulation];
   });
 
-    return resultArray;
-  };
+  return resultArray;
+};
