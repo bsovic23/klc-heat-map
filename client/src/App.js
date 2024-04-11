@@ -2,6 +2,8 @@ import React from 'react';
 
 // Pages
 import Map from './pages/Map';
+import Trends from './pages/Trends';
+import WhatsNew from './pages/WhatsNew';
 
 // Components
 import Header from './components/Header';
@@ -13,9 +15,14 @@ function App() {
         <header>
           <Header />
         </header>
-        <div>
-          < Map />
-        </div>
+        <section class='app-body'>
+          <div>
+            < Map />
+          </div>
+          <div>
+            < Trends />
+          </div>
+        </section>
         <footer>
           <Footer />
         </footer>
