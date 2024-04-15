@@ -4,14 +4,19 @@ import React, { useState } from 'react';
 
 
 // Function imports
-import { fyStateChange } from '../functions/TrendsFx';
+import { fyStateChangeFx, moduleTrendsFx } from '../functions/TrendsFx';
 
 // Data imports
 import { mockData } from '../data';
 
 const Trends = () => {
 
-    const stateTrends = fyStateChange(mockData);
+    const stateTrends = fyStateChangeFx(mockData);
+    const moduleTrends = moduleTrendsFx(mockData);
+
+    const { mostEnrolled, mostCompleted } = moduleTrends;
+
+    // console.log(moduleTrends);
 
     return(
         <section id='trends'>
@@ -22,8 +27,20 @@ const Trends = () => {
                     <p>trends here</p>
                 </div>
                 <div>
-                    <h3>Top 10 Courses Complete</h3>
-                    <p></p>
+                    <h3>Top 10 FY24 Courses Enrolled</h3>
+                    {mostEnrolled.map(({ moduleName, enrolled }) => (
+                    <p key={moduleName}>
+                        Module: {moduleName}, Enrolled: {enrolled}
+                    </p>
+                    ))}
+                </div>
+                <div>
+                    <h3>Top 10 FY24 Courses Completed</h3>
+                    {mostCompleted.map(({ moduleName, completed }) => (
+                    <p key={moduleName}>
+                        Module: {moduleName}, Completed: {completed}
+                    </p>
+                    ))}
                 </div>
             </div>
         </section>

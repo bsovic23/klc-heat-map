@@ -13,7 +13,9 @@ export const mockData = [
     "city": "Anchorage",
     "country": "United States",
     "population": "rural",
-    "year": 'FY24'
+    "year": 'FY24',
+    "moduleName": 'test module 1',
+    "moduleComplete": true
   },
   {
     "id": 999,
@@ -21,7 +23,9 @@ export const mockData = [
     "city": "Anchorage",
     "country": "United States",
     "population": "urban",
-    "year": 'FY23'
+    "year": 'FY23',
+    "moduleName": 'test module 1',
+    "moduleComplete": true
   },
   {
     "id": 1,
@@ -29,7 +33,9 @@ export const mockData = [
     "city": "Anchorage",
     "country": "United States",
     "population": "urban",
-    "year": 'FY24'
+    "year": 'FY24',
+    "moduleName": 'test module 2',
+    "moduleComplete": true
   },
   {
     "id": 2,
@@ -37,7 +43,9 @@ export const mockData = [
     "city": "Anchorage",
     "country": "United States",
     "population": "urban",
-    "year": 'FY24'
+    "year": 'FY24',
+    "moduleName": 'test module 2',
+    "moduleComplete": false
   },
   {
     "id": 3,
@@ -45,7 +53,9 @@ export const mockData = [
     "city": "Athens",
     "country": "United States",
     "population": "urban",
-    "year": 'FY23'
+    "year": 'FY23',
+    "moduleName": 'test module 1',
+    "moduleComplete": true
   },
   {
     "id": 4,
@@ -53,7 +63,9 @@ export const mockData = [
     "city": "Athens",
     "country": "United States",
     "population": "urban",
-    "year": 'FY23'
+    "year": 'FY23',
+    "moduleName": 'test module 3',
+    "moduleComplete": true
   },
   {
     "id": 5,
@@ -61,7 +73,9 @@ export const mockData = [
     "city": "Bear Creek",
     "country": "United States",
     "population": "rural",
-    "year": 'FY23'
+    "year": 'FY23',
+    "moduleName": 'test module 3',
+    "moduleComplete": true
   },
   {
     "id": 6,
@@ -69,7 +83,9 @@ export const mockData = [
     "city": "Birmingham",
     "country": "United States",
     "population": "rural",
-    "year": 'FY23'
+    "year": 'FY23',
+    "moduleName": 'test module 1',
+    "moduleComplete": true
   },
   {
     "id": 7,
@@ -77,7 +93,9 @@ export const mockData = [
     "city": "Birmingham",
     "country": "United States",
     "population": "rural",
-    "year": 'FY23'
+    "year": 'FY23',
+    "moduleName": 'test module 1',
+    "moduleComplete": false
   },
   {
     "id": 8,
@@ -85,7 +103,9 @@ export const mockData = [
     "city": "Birmingham",
     "country": "United States",
     "population": "rural",
-    "year": 'FY23'
+    "year": 'FY23',
+    "moduleName": 'test module 4',
+    "moduleComplete": true
   },
   {
     "id": 9,
@@ -93,6 +113,8 @@ export const mockData = [
     "city": "Birmingham",
     "country": "United States",
     "population": "rural",
-    "year": 'FY23'
+    "year": 'FY23',
+    "moduleName": 'test module 5',
+    "moduleComplete": false
   },
 ]

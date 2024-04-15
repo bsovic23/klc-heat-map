@@ -1,6 +1,10 @@
 // Trends Functions
 
-export const fyStateChange = (data) => {
+// ----------------------------------------------------------
+// FY Trends
+// ----------------------------------------------------------
+
+export const fyStateChangeFx = (data) => {
 
     const stateChange = {};
 
@@ -31,7 +35,44 @@ export const fyStateChange = (data) => {
 
 
     // Then take the first 5 and last 5 index (to rep big 5 change, big 5 losers)
-
-    console.log(stateChange);
+    
     return stateChange;
+};
+
+// ----------------------------------------------------------
+// Module Trends
+// ----------------------------------------------------------
+
+export const moduleTrendsFx = (data) => {
+
+    const moduleTrends = {};
+
+    for (const obj of data) {
+        let moduleName = obj.moduleName;
+        let moduleComplete = obj.moduleComplete;
+
+        moduleTrends[moduleName] = moduleTrends[moduleName] || {enrolled: 0, complete: 0 };
+
+        if (moduleComplete) {
+            moduleTrends[moduleName].enrolled +=1;
+            moduleTrends[moduleName].complete +=1;
+        } else {
+            moduleTrends[moduleName].enrolled +=1;
+        };
+    }
+
+    console.log(moduleTrends);
+
+    // Sort by enrollment
+    const sortedByEnrollment = Object.entries(moduleTrends).sort(([, a], [, b]) => b.enrolled - a.enrolled).splice(0, 10);
+
+    // Sort by completion
+    const sortedByCompletion = Object.entries(moduleTrends).sort(([, a], [, b]) => b.complete - a.complete).splice(0, 10);
+
+    const mostEnrolled = sortedByEnrollment.map(([moduleName, stats]) => ({ moduleName, enrolled: stats.enrolled }));
+    const mostCompleted = sortedByCompletion.map(([moduleName, stats]) => ({ moduleName, completed: stats.complete }));
+
+    console.log(mostCompleted);
+    console.log(mostEnrolled);
+    return { mostEnrolled, mostCompleted };
 };
