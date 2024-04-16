@@ -7,7 +7,7 @@
 3. International count
 4. FY change trends when clicking a state to view the stats
 5. UI update - hover animation on Urban Participation percent, pop up box on international N click
-
+6. Trends - State Change N, Courses Enrolled, Courses Completed
 
 
 
