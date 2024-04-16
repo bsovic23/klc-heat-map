@@ -7,8 +7,6 @@ Function takes the state clicked, and gets all object data related to that state
 
 export const findStateData = ( stateInput, filteredData ) => {
 
-  console.log(filteredData);
-
   const stateData = filteredData.filter((data) => (data.state === stateInput) && (data.country === 'United States')); 
 
   return stateData;
@@ -115,4 +113,34 @@ export const topCities = (stateData) => {
   });
 
   return resultArray;
+};
+
+
+//===========================================================================
+// International Countries N + Count  =======================================
+//===========================================================================
+
+export const internationalFx = (data) => {
+  // Filter by non-US
+  const internationalDataFiltered = data.filter((item) => item.country !== 'United States');
+
+  // Combine
+  const internationalCountryData = {};
+
+  internationalDataFiltered.forEach((item) => {
+    let country = item.country;
+
+    internationalCountryData[country] = internationalCountryData[country] || {count: 0}
+    internationalCountryData[country].count += 1; 
+  });
+
+ // Sort and return
+  const internationalFinal = Object.entries(internationalCountryData).map(([country, values]) => ({
+    country,
+    n: values.count
+  }));
+
+  internationalFinal.sort((a, b) => b.n - a.n);
+
+  return internationalFinal;
 };

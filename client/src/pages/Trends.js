@@ -17,8 +17,6 @@ const Trends = () => {
     const { mostChangeUp, mostChangeDown } = stateTrends;
     const { mostEnrolled, mostCompleted } = moduleTrends;
 
-    console.log(mostChangeDown);
-
     // state, fyChange
 
     return(

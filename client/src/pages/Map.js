@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import USAMap from 'react-usa-map';
 
 // Functions and Data
-import { findStateData, geographyPercent, fillColor, topCities, geographyStatus } from '../functions/MapFx';
+import { findStateData, geographyPercent, fillColor, topCities, geographyStatus, internationalFx } from '../functions/MapFx';
 import { mockData } from '../data';
 
 function Map() {
@@ -12,8 +12,13 @@ function Map() {
   // ---------------------------------------------------------------
   const [fiscalYearView, setFiscalYearView] = useState('All Time'); // Default View = All Time Data
   const [filteredData, setFilteredData] = useState(mockData);
-  const [internationalCount, setInternationalCount] = useState('');
 
+  const [showModal, setShowModal] = useState(false);
+  const [internationalDataSet, setInternationalDataSet] = useState(mockData);
+
+  const internationalData = internationalFx(internationalDataSet);
+
+  // Two vari
   useEffect(() => {
     const filtered = filterDataByYear(mockData, fiscalYearView);
     setFilteredData(filtered);
@@ -34,6 +39,11 @@ function Map() {
       return mockData.filter((item) => item.year === fiscalYearView);
     }
   };
+
+  useEffect(() => {
+    const internationalDataFiltered = filteredData.filter((item) => item.country !== 'United States');
+    setInternationalDataSet(internationalDataFiltered);
+  }, [filteredData]);
 
     // ---------------------------------------------------------------
     ///  STATE COLOR
@@ -224,7 +234,7 @@ function Map() {
         <section class='map'>
             <section class='map-year-select'>
               <div>
-                <p>Select Button to Filter the map by year of interest</p>
+                <p>Select Button to Filter the map by year of interest:</p>
                 <button onClick={() => selectFYButton('All Time')}>All Time</button>
                 <button onClick={() => selectFYButton('FY24')}>FY 24</button> 
                 <button onClick={() => selectFYButton('FY23')}>FY 23</button> 
@@ -287,6 +297,36 @@ function Map() {
                         )}
                     </div>
                 </section>
+            </section>
+            <section id='international-modal'>
+              <p>{fiscalYearView} had // individual countries represented, and a total of {internationalDataSet.length} participants!</p>
+              <button onClick={() => setShowModal(true)}>
+                  Click here to view countries and counts
+              </button>
+              <div>
+                  {showModal && (
+                      <div class='modal'>
+                          <button onClick={() => setShowModal(false)}>X Close window</button>
+                          <div class='scrollable-container'>
+                              <h2>Countries</h2>
+                              <table id='international-table'>
+                                <tr>
+                                  <th>Country</th>
+                                  <th>Count</th>
+                                  <th>Top Module Completed</th>
+                                </tr>                          
+                                  {internationalData.map((countryData, index) => (
+                                    <tr key={index}>
+                                      <td>{countryData.country}</td>
+                                      <td>{countryData.n}</td>
+                                      <td>HOLD FOR TOP MODULE</td>
+                                    </tr>
+                                  ))}
+                              </table>
+                          </div>
+                      </div>
+                  )}
+              </div>
             </section>
             <section class='legend'>
               <div>

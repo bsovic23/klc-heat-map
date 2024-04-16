@@ -487,4 +487,35 @@ export const mockData = [
     "moduleName": "module V",
     "moduleComplete": false
   },
+
+  {
+    "id": 47,
+    "state": "NA",
+    "city": "Mumbai",
+    "country": "India",
+    "population": "urban",
+    "year": "FY24",
+    "moduleName": "module V",
+    "moduleComplete": true
+  },
+  {
+    "id": 48,
+    "state": "NA",
+    "city": "Mumbai",
+    "country": "India",
+    "population": "urban",
+    "year": "FY24",
+    "moduleName": "module V",
+    "moduleComplete": true
+  },
+  {
+    "id": 49,
+    "state": "NA",
+    "city": "Subang Jaya",
+    "country": "Malaysia",
+    "population": "urban",
+    "year": "FY23",
+    "moduleName": "module V",
+    "moduleComplete": true
+  },
 ]
