@@ -231,117 +231,121 @@ function Map() {
     };
 
     return(
-        <section class='map'>
-            <section class='map-year-select'>
-              <div>
-                <p>Select Button to Filter the map by year of interest:</p>
-                <button onClick={() => selectFYButton('All Time')}>All Time</button>
-                <button onClick={() => selectFYButton('FY24')}>FY 24</button> 
-                <button onClick={() => selectFYButton('FY23')}>FY 23</button> 
-              </div>
-              <div>
-                <h1>Currently Viewing {fiscalYearView} Data</h1>
-              </div>
+      <section class='map'>
+        <section id='map-year-select'>
+          <div id='map-year-select-div'>
+            <div id='m1'>
+              <p>Select Button to Filter the map by year of interest:</p>
+            </div>
+            <div id='m2'>
+              <button onClick={() => selectFYButton('All Time')}>All Time</button>
+              <button onClick={() => selectFYButton('FY24')}>FY 24</button> 
+              <button onClick={() => selectFYButton('FY23')}>FY 23</button> 
+            </div>
+          </div>
+          <div  id='map-year-current-div'>
+            <h1>Currently Viewing {fiscalYearView} Data</h1>
+          </div>
+        </section>
+        <section class='flex-container'>
+            <section class='map-display'>
+                < USAMap onClick={mapHandler} customize={stateColors(filteredData)} />
             </section>
-            <section class='flex-container'>
-                <section class='map-display'>
-                    < USAMap onClick={mapHandler} customize={stateColors(filteredData)} />
-                </section>
-                <section class='map-results'>
-                    <div>
-                        {stateStats ? (
-                            <div>
-                                <h1>State: {stateStats.state}</h1>
-                                {(stateStats.length) !== 0 ? (
-                                    <div>
-                                        <p>State Participants Total: {stateStats.total}</p>
-                                        <p>Rural Participants Total: {stateStats.rural}</p>
-                                        <p>Urban Participants Total: {stateStats.urban}</p>
-                                        <p>Urban Participation Percent: {stateStats.percent} %</p>
-                                    </div>
-                                ) : (
-                                    <div>
-                                        There are no N recruitment results
-                                    </div>
-                                )}
-                            </div>
-                        ) : (
-                            <div>
-                                Choose a state to get started!
-                            </div>
-                        )}
-                    </div>
-                    <div>
-                        {stateStats2.length !== 0 && (
-                            <div>
-                              <h2>
-                                {stateStats2.length >=5
-                                ? `${fiscalYearView} Top 5 Participation Cities`
-                                : `${fiscalYearView} Top ${stateStats2.length} Participation Cities`}
-                              </h2>         
-                              <table border="1" class='table-map-results'>
-                                <tr>
-                                  <th>City:</th>
-                                  <th>N:</th>
-                                  <th>Urban/Rural Status:</th>
-                                </tr>
-                                  {stateStats2.slice(0, 5).map((cityData, index) => (
-                                          <tr key={index} class="rowClass">
-                                            <td>{cityData[0]}</td>
-                                            <td>{cityData[1]}</td>
-                                            <td>{cityData[2]}</td>
-                                          </tr>
-                                      ))}
-                              </table>
-                            </div>
-                        )}
-                    </div>
-                </section>
-            </section>
-            <section id='international-modal'>
-              <p>{fiscalYearView} had // individual countries represented, and a total of {internationalDataSet.length} participants!</p>
-              <button onClick={() => setShowModal(true)}>
-                  Click here to view countries and counts
-              </button>
-              <div>
-                  {showModal && (
-                      <div class='modal'>
-                          <button onClick={() => setShowModal(false)}>X Close window</button>
-                          <div class='scrollable-container'>
-                              <h2>Countries</h2>
-                              <table id='international-table'>
-                                <tr>
-                                  <th>Country</th>
-                                  <th>Count</th>
-                                  <th>Top Module Completed</th>
-                                </tr>                          
-                                  {internationalData.map((countryData, index) => (
-                                    <tr key={index}>
-                                      <td>{countryData.country}</td>
-                                      <td>{countryData.n}</td>
-                                      <td>HOLD FOR TOP MODULE</td>
-                                    </tr>
+            <section class='map-results'>
+                <div>
+                    {stateStats ? (
+                        <div>
+                            <h1>State: {stateStats.state}</h1>
+                            {(stateStats.length) !== 0 ? (
+                                <div>
+                                    <p>State Participants Total: {stateStats.total}</p>
+                                    <p>Rural Participants Total: {stateStats.rural}</p>
+                                    <p>Urban Participants Total: {stateStats.urban}</p>
+                                    <p>Urban Participation Percent: {stateStats.percent} %</p>
+                                </div>
+                            ) : (
+                                <div>
+                                    There are no N recruitment results
+                                </div>
+                            )}
+                        </div>
+                    ) : (
+                        <div>
+                            Choose a state to get started!
+                        </div>
+                    )}
+                </div>
+                <div>
+                    {stateStats2.length !== 0 && (
+                        <div>
+                          <h2>
+                            {stateStats2.length >=5
+                            ? `${fiscalYearView} Top 5 Participation Cities`
+                            : `${fiscalYearView} Top ${stateStats2.length} Participation Cities`}
+                          </h2>         
+                          <table border="1" class='table-map-results'>
+                            <tr>
+                              <th>City:</th>
+                              <th>N:</th>
+                              <th>Urban/Rural Status:</th>
+                            </tr>
+                              {stateStats2.slice(0, 5).map((cityData, index) => (
+                                      <tr key={index} class="rowClass">
+                                        <td>{cityData[0]}</td>
+                                        <td>{cityData[1]}</td>
+                                        <td>{cityData[2]}</td>
+                                      </tr>
                                   ))}
-                              </table>
-                          </div>
-                      </div>
-                  )}
-              </div>
-            </section>
-            <section class='legend'>
-              <div>
-                <h1>Urban Participation Percent</h1>
-              </div>
-                <p id='colorNone' class='tag-none'>No Data</p> 
-                <p class='tag'> MORE RURAL</p>
-                <p id='colorOne'>0 - 19 % </p>
-                <p id='colorTwo'>20 - 39 % </p>
-                <p id='colorThree'>40 - 59 % </p>
-                <p id='colorFour'>60 -79 % </p>
-                <p id='colorFive'>80 - 100 % </p>
-                <p class='tag'>MORE URBAN</p>
+                          </table>
+                        </div>
+                    )}
+                </div>
             </section>
         </section>
+        <section id='international-modal'>
+          <p>{fiscalYearView} had {internationalData.length} individual countries represented, and a total of {internationalDataSet.length} participants!</p>
+          <button onClick={() => setShowModal(true)}>
+              Click here to view countries and counts
+          </button>
+          <div>
+              {showModal && (
+                  <div class='modal'>
+                      <button onClick={() => setShowModal(false)}>X Close window</button>
+                      <div class='scrollable-container'>
+                          <h2>Countries</h2>
+                          <table id='international-table'>
+                            <tr>
+                              <th>Country</th>
+                              <th>KLC Participation Count</th>
+                              <th>Top Module Completed In Country</th>
+                            </tr>                          
+                              {internationalData.map((countryData, index) => (
+                                <tr key={index}>
+                                  <td>{countryData.country}</td>
+                                  <td>{countryData.n}</td>
+                                  <td>HOLD FOR TOP MODULE</td>
+                                </tr>
+                              ))}
+                          </table>
+                      </div>
+                  </div>
+              )}
+          </div>
+        </section>
+        <section class='legend'>
+          <div>
+            <h1>Urban Participation Percent</h1>
+          </div>
+            <p id='colorNone' class='tag-none'>No Data</p> 
+            <p class='tag'> MORE RURAL</p>
+            <p id='colorOne'>0 - 19 % </p>
+            <p id='colorTwo'>20 - 39 % </p>
+            <p id='colorThree'>40 - 59 % </p>
+            <p id='colorFour'>60 -79 % </p>
+            <p id='colorFive'>80 - 100 % </p>
+            <p class='tag'>MORE URBAN</p>
+        </section>
+      </section>
     )
 };
 
