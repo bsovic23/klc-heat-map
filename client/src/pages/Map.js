@@ -303,7 +303,7 @@ function Map() {
             </section>
         </section>
         <section id='international-modal'>
-          <p>{fiscalYearView} had {internationalData.length} individual countries represented, and a total of {internationalDataSet.length} participants!</p>
+          <p>{fiscalYearView} had {internationalData.length} other countries represented, and a total of {internationalDataSet.length} international participants!</p>
           <button onClick={() => setShowModal(true)}>
               Click here to view countries and counts
           </button>
@@ -312,18 +312,17 @@ function Map() {
                   <div class='modal'>
                       <button onClick={() => setShowModal(false)}>X Close window</button>
                       <div class='scrollable-container'>
-                          <h2>Countries</h2>
                           <table id='international-table'>
                             <tr>
                               <th>Country</th>
                               <th>KLC Participation Count</th>
-                              <th>Top Module Completed In Country</th>
+                              <th>Top Module Completed In Country (COUNT)</th>
                             </tr>                          
                               {internationalData.map((countryData, index) => (
                                 <tr key={index}>
                                   <td>{countryData.country}</td>
                                   <td>{countryData.n}</td>
-                                  <td>HOLD FOR TOP MODULE</td>
+                                  <td>HOLD FOR TOP MODULE (COUNT NUMBER)</td>
                                 </tr>
                               ))}
                           </table>
