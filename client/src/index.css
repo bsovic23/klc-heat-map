@@ -12,6 +12,11 @@ code {
     monospace;
 }
 
+/* Root Variables */
+:root {
+  --box-color: rgb(196, 187, 187);
+}
+
 /* CSS ============================================================ */
 
 /* ------------------------------------------------------------ */
@@ -82,7 +87,7 @@ code {
 
 /* Map Results Section */
 .map .map-results {
-  background-color: gray;
+  background-color: var(--box-color);
   padding: 20px;
   border: 5px black solid;
   font-weight: 700;
@@ -167,7 +172,7 @@ background-color: yellow;
   margin-top: 20px;
   border: 5px solid black;
   padding: 20px;
-  background-color: gray;
+  background-color: var(--box-color);
   display: flex;
   align-items: center;
 }
@@ -213,6 +218,30 @@ background-color: yellow;
 
 .map .legend .tag {
   background-color: aquamarine;
+}
+
+/* ------------------------------------------------------------ */
+/* Trends */
+/* ------------------------------------------------------------ */
+#trends h2 {
+  text-align: center;
+  margin-bottom: 20px;;
+}
+
+.trends-container {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 10%;
+}
+
+.trends-box {
+  background-color: var(--box-color);
+  border: solid black 2px;
+  padding: 10px;
+}
+
+.trends-box p {
+  margin: 4px 0;
 }
 
 /* ------------------------------------------------------------ */

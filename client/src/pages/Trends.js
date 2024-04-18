@@ -22,8 +22,8 @@ const Trends = () => {
     return(
         <section id='trends'>
             <h2>Trends</h2>
-            <div>
-                <div>
+            <div class='trends-container'>
+                <div class='trends-box'>
                     <h3>State Changes FY23 - FY24</h3>
                     <p>Biggest Increase</p>
                     {mostChangeUp.map(({state, fyChange}, index) => (
@@ -38,7 +38,7 @@ const Trends = () => {
                         </p>
                     ))}
                 </div>
-                <div>
+                <div class='trends-box'>
                     <h3>Top 10 FY24 Courses Enrolled</h3>
                     {mostEnrolled.map(({ moduleName, enrolled }, index) => (
                     <p key={moduleName}>
@@ -46,7 +46,7 @@ const Trends = () => {
                     </p>
                     ))}
                 </div>
-                <div>
+                <div class='trends-box'>
                     <h3>Top 10 FY24 Courses Completed</h3>
                     {mostCompleted.map(({ moduleName, completed }, index) => (
                     <p key={moduleName}>
