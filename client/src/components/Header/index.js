@@ -4,7 +4,7 @@ function Header() {
     return(
         <section class='header'>
             <h1>KLC Participation</h1>
-            <h4>Version 2.05.01</h4>
+            <h4>Version 2.05.01 (ARROW DROP DOWN)</h4>
         </section>
     )
 };
