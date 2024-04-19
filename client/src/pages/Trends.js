@@ -21,17 +21,17 @@ const Trends = () => {
 
     return(
         <section id='trends'>
-            <h2>Trends</h2>
+            <h1>Trends</h1>
             <div class='trends-container'>
                 <div class='trends-box'>
-                    <h3>State Changes FY23 - FY24</h3>
-                    <p>Biggest Increase</p>
+                    <h3>State Changes FY23 to FY24</h3>
+                    <h3>Biggest Increase</h3>
                     {mostChangeUp.map(({state, fyChange}, index) => (
                         <p key={index}>
                             {index + 1}. {state}: {fyChange}
                         </p>
                     ))}
-                    <p>Biggest Decrease</p>
+                    <h3>Biggest Decrease</h3>
                     {mostChangeDown.map(({state, fyChange}, index) => (
                         <p key={index}>
                             {index + 1}. {state}: {fyChange}

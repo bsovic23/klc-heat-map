@@ -245,6 +245,7 @@ function Map() {
           </div>
           <div  id='map-year-current-div'>
             <h1>Currently Viewing {fiscalYearView} Data</h1>
+            <p>(N CODE NUMBER) United States Contacts</p>
           </div>
         </section>
         <section class='flex-container'>
@@ -297,6 +298,10 @@ function Map() {
                                       </tr>
                                   ))}
                           </table>
+                          <div>
+                            <h2>Top Module Completed</h2>
+                            <p>(MODULE CODE/RESULT HERE), (N)</p>
+                          </div>
                         </div>
                     )}
                 </div>

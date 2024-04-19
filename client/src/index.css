@@ -145,7 +145,7 @@ background-color: yellow;
 }
 
 .scrollable-container {
-  max-height: 40vh;
+  max-height: 50vh;
   overflow-y: auto;
   padding: 30px;
 }
@@ -154,6 +154,7 @@ background-color: yellow;
   border: 1px solid black;
   text-align: center;
   padding: 10px;
+  background-color: var(--box-color);
 }
 
 /* ------------------------------------------------------------ */
@@ -223,7 +224,7 @@ background-color: yellow;
 /* ------------------------------------------------------------ */
 /* Trends */
 /* ------------------------------------------------------------ */
-#trends h2, h3 {
+#trends h1, h3 {
   text-align: center;
   margin-bottom: 20px;;
 }
@@ -240,8 +241,20 @@ background-color: yellow;
   padding: 10px;
 }
 
+#trends h1 {
+  font-size: 50px;;
+}
+
+#trends h3 {
+  font-size: 20px;;
+}
+
 .trends-box p {
   margin: 4px 0;
+}
+
+.trends-box p:hover {
+  background-color: yellow;
 }
 
 /* ------------------------------------------------------------ */
