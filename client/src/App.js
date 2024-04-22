@@ -3,7 +3,6 @@ import React from 'react';
 // Pages
 import Map from './pages/Map';
 import Trends from './pages/Trends';
-import WhatsNew from './pages/WhatsNew';
 
 // Components
 import Header from './components/Header';

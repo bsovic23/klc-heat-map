@@ -50,6 +50,31 @@ code {
   margin-right: 20px;
 }
 
+.drop-down-list {
+  position: absolute;
+  top: 5.5rem;
+  right: 1.5rem;
+  padding: 15px;
+  width: 600px;
+  background: white;
+  border-radius: 8px;
+  border: 1px solid black;
+  font-size: 20px;
+}
+
+.drop-down-list::before{
+  content: '';
+  position: absolute;
+  top: -0.7rem;
+  right: 1.1rem;
+  width: 20px;
+  height: 20px;
+  transform: rotate(45deg);
+  background-color: white;
+  border-left: 1px solid black;
+  border-top: 1px solid black;
+}
+
 /* ------------------------------------------------------------ */
 /* Map */
 /* ------------------------------------------------------------ */
