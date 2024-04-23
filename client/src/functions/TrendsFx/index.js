@@ -44,22 +44,27 @@ export const fyStateChangeFx = (data) => {
 // Module Trends
 // ----------------------------------------------------------
 
-export const moduleTrendsFx = (data) => {
+export const moduleTrendsFx = (data, fyView) => {
 
     const moduleTrends = {};
 
     for (const obj of data) {
+        let moduleYear = obj.year
         let moduleName = obj.moduleName;
         let moduleComplete = obj.moduleComplete;
 
-        moduleTrends[moduleName] = moduleTrends[moduleName] || {enrolled: 0, complete: 0 };
+        if (moduleYear === fyView || fyView === 'All Time') {
+            moduleTrends[moduleName] = moduleTrends[moduleName] || {enrolled: 0, complete: 0 };
 
-        if (moduleComplete) {
-            moduleTrends[moduleName].enrolled +=1;
-            moduleTrends[moduleName].complete +=1;
+            if (moduleComplete) {
+                moduleTrends[moduleName].enrolled +=1;
+                moduleTrends[moduleName].complete +=1;
+            } else {
+                moduleTrends[moduleName].enrolled +=1;
+            };
         } else {
-            moduleTrends[moduleName].enrolled +=1;
-        };
+            continue;
+        }
     };
 
     // Sort by enrollment

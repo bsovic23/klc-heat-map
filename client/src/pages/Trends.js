@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 // Component imports
 
@@ -11,17 +11,42 @@ import { mockData } from '../data';
 
 const Trends = () => {
 
+    const [fyView, setFyView] = useState('All Time');
+    const [filteredTrendData, setFilteredTrendData] = useState(mockData);
+
     const stateTrends = fyStateChangeFx(mockData);
-    const moduleTrends = moduleTrendsFx(mockData);
+    const moduleTrends = moduleTrendsFx(filteredTrendData, fyView);
 
     const { mostChangeUp, mostChangeDown } = stateTrends;
     const { mostEnrolled, mostCompleted } = moduleTrends;
 
-    // state, fyChange
+    // Update on Click
+    useEffect(() => {
+        const filtered = filterModuleDataByYear(mockData, fyView);
+        setFilteredTrendData(filtered);
+    }, [fyView]);
+
+    const filterModuleDataByYear = (mockData, fiscalYear) => {
+        if (fiscalYear === 'All Time') {
+            return mockData;
+        } else {
+            return mockData.filter((item) => item.year === fiscalYear);
+        }
+    };
+
+    const selectFyTrendButton = (year) => {
+        setFyView(year);
+    }
 
     return(
         <section id='trends'>
-            <h1>Trends</h1>
+            <h1>{fyView} Trends</h1>
+            <div id="trends-buttons-div">
+                <p>View Data by:</p>
+                <button onClick={() => selectFyTrendButton('All Time')}>All Time</button>
+                <button onClick={() => selectFyTrendButton('FY24')}>FY24</button>
+                <button onClick={() => selectFyTrendButton('FY23')}>FY23</button>
+            </div>
             <div class='trends-container'>
                 <div class='trends-box'>
                     <h3>State Changes FY23 to FY24</h3>
@@ -39,7 +64,7 @@ const Trends = () => {
                     ))}
                 </div>
                 <div class='trends-box'>
-                    <h3>Top 10 FY24 Courses Enrolled</h3>
+                    <h3>Top 10 {fyView} Courses Enrolled</h3>
                     {mostEnrolled.map(({ moduleName, enrolled }, index) => (
                     <p key={moduleName}>
                         {index + 1}. {moduleName}, Enrolled: {enrolled}
@@ -47,7 +72,7 @@ const Trends = () => {
                     ))}
                 </div>
                 <div class='trends-box'>
-                    <h3>Top 10 FY24 Courses Completed</h3>
+                    <h3>Top 10 {fyView} Courses Completed</h3>
                     {mostCompleted.map(({ moduleName, completed }, index) => (
                     <p key={moduleName}>
                         {index + 1}. {moduleName}, Completed: {completed}
