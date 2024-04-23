@@ -4,7 +4,10 @@ import React, { useState, useEffect } from 'react';
 
 
 // Function imports
-import { fyStateChangeFx, moduleTrendsFx } from '../functions/TrendsFx';
+import { 
+    fyStateChangeFx, 
+    moduleTrendsFx 
+} from '../functions/TrendsFx';
 
 // Data imports
 import { mockData } from '../data';

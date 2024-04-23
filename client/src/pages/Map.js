@@ -2,7 +2,15 @@ import React, { useState, useEffect } from 'react';
 import USAMap from 'react-usa-map';
 
 // Functions and Data
-import { findStateData, geographyPercent, fillColor, topCities, geographyStatus, internationalFx } from '../functions/MapFx';
+import { 
+  findStateData, 
+  geographyPercent, 
+  fillColor, 
+  topCities, 
+  geographyStatus, 
+  internationalFx 
+} from '../functions/MapFx';
+
 import { mockData } from '../data';
 
 function Map() {

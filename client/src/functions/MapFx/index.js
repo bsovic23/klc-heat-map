@@ -2,9 +2,6 @@
 Function takes the state clicked, and gets all object data related to that state
 */
 
-// [X] Version 2 pre-test done function findStateData
-// [X] Version 2 works returns stateData based on the FY selected
-
 export const findStateData = ( stateInput, filteredData ) => {
 
   const stateData = filteredData.filter((data) => (data.state === stateInput) && (data.country === 'United States')); 
