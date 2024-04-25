@@ -6,6 +6,7 @@ function Footer() {
     return(
         <section class='footer'>
             <div class="footer-instructions">
+                <p>App Desgined and Coded By Brit Sovic</p>
                 <p>Click the icons below to visit my personal pages</p>
             </div>
             <div class="footer-section-links">

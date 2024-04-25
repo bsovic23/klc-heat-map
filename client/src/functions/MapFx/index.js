@@ -65,6 +65,16 @@ export const fillColor = (state, arr) => {
 };
 
 //===========================================================================
+// Functions - Map Shading Sections  ========================================
+//===========================================================================
+export const countFx = (data) => {
+  const filterCount = data.filter((item) => item.country === 'United States');
+
+  return filterCount.length;
+}
+
+
+//===========================================================================
 // Functions - Map Results Sections  ========================================
 //===========================================================================
 
@@ -112,6 +122,30 @@ export const topCities = (stateData) => {
   return resultArray;
 };
 
+// Function determines the top module completed
+export const topModuleCompleted = (data) => {
+  let moduleCount = {};
+
+  for (const obj of data) {
+      let moduleName = obj.moduleName;
+      let moduleComplete = obj.moduleComplete;
+
+      if (!moduleCount[moduleName]) {
+          moduleCount[moduleName] = {complete: 0}
+      }
+
+      if (moduleComplete) {
+          moduleCount[moduleName].complete += 1
+      }
+  };
+
+  let moduleCountsArray = Object.entries(moduleCount).map(([moduleName, {complete}]) => ({ moduleName, complete }));
+
+  moduleCountsArray.sort((a, b) => b.complete - a.complete);
+
+  return moduleCountsArray[0];
+};
+
 
 //===========================================================================
 // International Countries N + Count  =======================================
@@ -126,18 +160,50 @@ export const internationalFx = (data) => {
 
   internationalDataFiltered.forEach((item) => {
     let country = item.country;
+    let module = item.moduleName;
+    let complete = item.moduleComplete;
 
-    internationalCountryData[country] = internationalCountryData[country] || {count: 0}
-    internationalCountryData[country].count += 1; 
+    // Initialize country data if not already present
+    if (!internationalCountryData[country]) {
+      internationalCountryData[country] = {
+        count: 0,
+        completedModules: {}
+      };
+    }
+
+    // Increment country count
+    internationalCountryData[country].count += 1;
+
+    // Update completed module count for this country
+    if (complete && !internationalCountryData[country].completedModules[module]) {
+      internationalCountryData[country].completedModules[module] = 1;
+    } else if (complete) {
+      internationalCountryData[country].completedModules[module] += 1;
+    }
   });
 
- // Sort and return
+  // Sort completedModules for each country by count
+  for (const country in internationalCountryData) {
+    if (internationalCountryData.hasOwnProperty(country)) {
+      const modules = internationalCountryData[country].completedModules;
+      const sortedModules = Object.entries(modules)
+        .sort((a, b) => b[1] - a[1])
+        .reduce((acc, [module, count]) => {
+          acc[module] = count;
+          return acc;
+        }, {});
+      internationalCountryData[country].completedModules = sortedModules;
+    }
+  }
+
+  // Sort and return
   const internationalFinal = Object.entries(internationalCountryData).map(([country, values]) => ({
     country,
-    n: values.count
+    count: values.count,
+    topModule: Object.keys(values.completedModules)[0] || 'No Module Completed' // Get the top module, or null if no completed modules
   }));
 
-  internationalFinal.sort((a, b) => b.n - a.n);
+  internationalFinal.sort((a, b) => b.count - a.count);
 
   return internationalFinal;
 };

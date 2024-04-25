@@ -80,8 +80,14 @@ code {
 /* ------------------------------------------------------------ */
 
 /* Map Select Year Section */
+#map-year-select-div {
+  display: flex;
+  flex-direction: column;
+}
+
 #m1, #m2 {
-  display: inline-block;
+  display: flex;
+  align-items: center; 
 }
 
 #map-year-select-div, #map-year-current-div  {
@@ -113,7 +119,7 @@ code {
 /* Map Results Section */
 .map .map-results {
   background-color: var(--box-color);
-  padding: 20px;
+  padding: 5x;
   border: 5px black solid;
   font-weight: 700;
 }
@@ -136,6 +142,12 @@ code {
 }
 
 /* Map Results Table */
+
+.table-map-results {
+  margin: 0 auto; 
+  width: 80%; 
+}
+
 .table-map-results tr th {
   background-color: aquamarine;
 }
@@ -145,8 +157,10 @@ code {
 }
 
 .table-map-results tr td {
-  padding-left: 25px;
-  padding-right: 25px;
+  text-align: center;
+  padding-left: 10px;
+  padding-right: 10px;
+
 }
 
 .table-map-results .rowClass:hover {

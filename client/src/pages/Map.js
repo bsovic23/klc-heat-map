@@ -8,7 +8,9 @@ import {
   fillColor, 
   topCities, 
   geographyStatus, 
-  internationalFx 
+  topModuleCompleted,
+  internationalFx,
+  countFx, 
 } from '../functions/MapFx';
 
 import { mockData } from '../data';
@@ -19,7 +21,12 @@ function Map() {
   // Data View based on year selected
   // ---------------------------------------------------------------
   const [fiscalYearView, setFiscalYearView] = useState('All Time'); // Default View = All Time Data
+  const [participantView, setParticipantView] = useState('All Participants'); // Default View = All Participants
+  
+  // Data Used based on the two filter buttons above ^
   const [filteredData, setFilteredData] = useState(mockData);
+
+  const [unitedStatesN, setUnitedStatesN] = useState('blank');
 
   const [showModal, setShowModal] = useState(false);
   const [internationalDataSet, setInternationalDataSet] = useState(mockData);
@@ -28,23 +35,40 @@ function Map() {
 
   // Two vari
   useEffect(() => {
-    const filtered = filterDataByYear(mockData, fiscalYearView);
+    const filtered = filterDataFx(mockData, fiscalYearView, participantView);
     setFilteredData(filtered);
+    
+    setUnitedStatesN(countFx(filtered));
 
     chooseStateStats('');
     chooseStateStats2('');
+    chooseStateStats3('');
     
-  }, [fiscalYearView]);
+  }, [fiscalYearView, participantView]);
 
   const selectFYButton = (year) => {
     setFiscalYearView(year);
-  }
+  };
 
-  const filterDataByYear = (mockData, fiscalYearView) => {
-    if (fiscalYearView === 'All Time') {
+  const selectParticipantButton = (status) => {
+    setParticipantView(status);
+  };
+
+  const filterDataFx = (mockData, fiscalYearView, participantView) => {
+    if (fiscalYearView === 'All Time' && participantView === 'All Participants') {
       return mockData;
     } else {
-      return mockData.filter((item) => item.year === fiscalYearView);
+      let filteredData = mockData;
+  
+      if (fiscalYearView !== 'All Time') {
+        filteredData = filteredData.filter((item) => item.year === fiscalYearView);
+      }
+  
+      if (participantView === 'Completed Module Participants') {
+        filteredData = filteredData.filter((item) => item.moduleComplete === true);
+      }
+      
+      return filteredData;
     }
   };
 
@@ -58,6 +82,7 @@ function Map() {
     // ---------------------------------------------------------------
     const [stateStats, chooseStateStats] = useState('');
     const [stateStats2, chooseStateStats2] = useState('');
+    const [stateStats3, chooseStateStats3] = useState('');
 
     const mapHandler = (event) => {
 
@@ -69,9 +94,11 @@ function Map() {
         // resultTwo - state clicked top city data
         let resultOne = geographyStatus(stateResultsAll);
         let resultTwo = topCities(stateResultsAll);
+        let resultThree = topModuleCompleted(stateResultsAll);
 
         chooseStateStats(resultOne);
         chooseStateStats2(resultTwo);
+        chooseStateStats3(resultThree);
     };
 
     // ---------------------------------------------------------------
@@ -243,17 +270,28 @@ function Map() {
         <section id='map-year-select'>
           <div id='map-year-select-div'>
             <div id='m1'>
-              <p>Select Button to Filter the map by year of interest:</p>
+              <div>
+                <p>Filter the map by year of interest:</p>
+              </div>
+              <div>
+                <button onClick={() => selectFYButton('All Time')}>All Time</button>
+                <button onClick={() => selectFYButton('FY24')}>FY 24</button> 
+                <button onClick={() => selectFYButton('FY23')}>FY 23</button> 
+              </div>
             </div>
             <div id='m2'>
-              <button onClick={() => selectFYButton('All Time')}>All Time</button>
-              <button onClick={() => selectFYButton('FY24')}>FY 24</button> 
-              <button onClick={() => selectFYButton('FY23')}>FY 23</button> 
-            </div>
+              <div>
+                <p>Filter the map By All Participants or Completed Module Participants:</p>
+              </div>
+              <div>
+                <button onClick={() => selectParticipantButton('All Participants')}>All Participants</button>
+                <button onClick={() => selectParticipantButton('Completed Module Participants')}>Completed Module Participants</button> 
+              </div>
+            </div>                               
           </div>
           <div  id='map-year-current-div'>
-            <h1>Currently Viewing {fiscalYearView} Data</h1>
-            <p>(N CODE NUMBER) United States Contacts</p>
+            <h1>Currently Viewing {fiscalYearView} {participantView} Data</h1>
+            <p>{unitedStatesN} United States Contacts</p>
           </div>
         </section>
         <section class='flex-container'>
@@ -308,7 +346,16 @@ function Map() {
                           </table>
                           <div>
                             <h2>Top Module Completed</h2>
-                            <p>(MODULE CODE/RESULT HERE), (N)</p>
+                            <table border="1" class='table-map-results'>
+                              <tr>
+                                <th>Module:</th>
+                                <th>Completed:</th>
+                              </tr>
+                              <tr class="rowClass">
+                                <td>{stateStats3.moduleName}</td>
+                                <td>{stateStats3.complete}</td>
+                              </tr>                          
+                            </table>
                           </div>
                         </div>
                     )}
@@ -334,8 +381,8 @@ function Map() {
                               {internationalData.map((countryData, index) => (
                                 <tr key={index}>
                                   <td>{countryData.country}</td>
-                                  <td>{countryData.n}</td>
-                                  <td>HOLD FOR TOP MODULE (COUNT NUMBER)</td>
+                                  <td>{countryData.count}</td>
+                                  <td>{countryData.topModule}</td>
                                 </tr>
                               ))}
                           </table>
