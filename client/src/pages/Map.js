@@ -61,7 +61,7 @@ function Map() {
       let filteredData = mockData;
   
       if (fiscalYearView !== 'All Time') {
-        filteredData = filteredData.filter((item) => item.year === fiscalYearView);
+        filteredData = filteredData.filter((item) => item.fy === fiscalYearView);
       }
   
       if (participantView === 'Completed Module Participants') {
@@ -275,6 +275,7 @@ function Map() {
               </div>
               <div>
                 <button onClick={() => selectFYButton('All Time')}>All Time</button>
+                <button onClick={() => selectFYButton('FY25')}>FY 25</button>
                 <button onClick={() => selectFYButton('FY24')}>FY 24</button> 
                 <button onClick={() => selectFYButton('FY23')}>FY 23</button> 
               </div>

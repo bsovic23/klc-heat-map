@@ -8,18 +8,20 @@ export const fyStateChangeFx = (data) => {
     const stateChange = {};
 
     const analysisData = data.filter(item => 
-        (item.year === 'FY24' || item.year === 'FY23') &&
+        (item.fy === 'FY25' || item.fy === 'FY24' || item.fy === 'FY23') &&
         item.country === 'United States');
 
     analysisData.forEach((item) => {
         const state = item.state;
-        const year = item.year;
+        const fy = item.fy;
 
-        stateChange[state] = stateChange[state] || { fy24: 0, fy23: 0 };
+        stateChange[state] = stateChange[state] || { fy25: 0, fy24: 0, fy23: 0 };
 
-        if (year === 'FY24') {
+        if (fy === 'FY25') {
+            stateChange[state].fy25 += 1;
+        } else if (fy === 'FY24') {
             stateChange[state].fy24 += 1;
-        } else if (year === 'FY23') {
+        } else if (fy === 'FY23') {
             stateChange[state].fy23 += 1;
         }
     });

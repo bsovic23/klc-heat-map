@@ -2,7 +2,8 @@ import React from 'react';
 
 // Pages
 import Map from './pages/Map';
-import Trends from './pages/Trends';
+import ModuleStats from './pages/ModuleStats';
+import FyTrends from './pages/FyTrends';
 
 // Components
 import Header from './components/Header';
@@ -19,7 +20,10 @@ function App() {
             < Map />
           </div>
           <div>
-            < Trends />
+            < ModuleStats />
+          </div>
+          <div>
+            < FyTrends />
           </div>
         </section>
         <footer>
