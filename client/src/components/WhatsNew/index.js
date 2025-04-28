@@ -11,7 +11,8 @@ export const WhatsNew = ({ isOpen, onClose }) => {
             <button onClick={onClose}>X Close</button>
             <ul>
                 <p>Updates:</p>
-                <li>Filter map view by FY and Module Enrollment/Completion</li>
+                <li>Application now includes FY25 Data</li>
+                <li>State Change data includes All time, as well as year to year trends</li>
             </ul>
         </div>
     )

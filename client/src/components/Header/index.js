@@ -15,7 +15,7 @@ function Header() {
     return(
         <section class='header'>
             <h1>KLC Participation</h1>
-            <h4>Version 2.06.02 <button onClick={() => setWhatsNew(true)}>Click to see whats New</button>{whatsNew && (<WhatsNew isOpen={whatsNew} onClose={handleWhatsNewClose}/>)}</h4>
+            <h4>Version 3.12.08 <button onClick={() => setWhatsNew(true)}>Click to see whats New</button>{whatsNew && (<WhatsNew isOpen={whatsNew} onClose={handleWhatsNewClose}/>)}</h4>
         </section>
     )
 };
