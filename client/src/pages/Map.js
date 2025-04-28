@@ -61,7 +61,7 @@ function Map() {
       let filteredData = mockData;
   
       if (fiscalYearView !== 'All Time') {
-        filteredData = filteredData.filter((item) => item.fy === fiscalYearView);
+        filteredData = filteredData.filter((item) => item.year === fiscalYearView);
       }
   
       if (participantView === 'Completed Module Participants') {

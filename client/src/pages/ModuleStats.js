@@ -5,9 +5,8 @@ import React, { useState, useEffect } from 'react';
 
 // Function imports
 import { 
-    fyStateChangeFx, 
-    moduleTrendsFx 
-} from '../functions/TrendsFx';
+    moduleTrendsFx,
+} from '../functions/ModuleStatsFx';
 
 // Data imports
 import { mockData } from '../data';
@@ -45,6 +44,7 @@ const ModuleStats = () => {
             <div id="trends-buttons-div">
                 <p>View Data by:</p>
                 <button onClick={() => selectFyTrendButton('All Time')}>All Time</button>
+                <button onClick={() => selectFyTrendButton('FY25')}>FY25</button>
                 <button onClick={() => selectFyTrendButton('FY24')}>FY24</button>
                 <button onClick={() => selectFyTrendButton('FY23')}>FY23</button>
             </div>
